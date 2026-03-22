@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "mini1-raksha-trigger",
+    "slug": "mini1-raksha-trigger",
+    "version": "1.0.0",
+    "scheme": "mini1-raksha-trigger",
+    "userInterfaceStyle": "light",
+    "plugins": [
+      "expo-router"
+    ],
+    "android": {
+      "package": "com.anonymous.mini1rakshatrigger"
+    }
+  }
+}
