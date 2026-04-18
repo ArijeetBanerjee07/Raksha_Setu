@@ -1,8 +1,18 @@
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import { View, Text, StyleSheet, Animated, Pressable } from 'react-native';
 import { useEffect, useRef } from 'react';
 
-export default function RakshaMode() {
+export default function RakshaMode({ onCancel }) {
   const scale = useRef(new Animated.Value(1)).current;
+  const lastTapRef = useRef(0);
+
+  const handlePress = () => {
+    const now = Date.now();
+    // If the gap between two taps is less than 350ms, intercept as a Double Tap!
+    if (now - lastTapRef.current < 350) {
+      if (onCancel) onCancel();
+    }
+    lastTapRef.current = now;
+  };
 
   useEffect(() => {
     Animated.loop(
@@ -22,11 +32,11 @@ export default function RakshaMode() {
   }, [scale]);
 
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={handlePress}>
       <Animated.View style={[styles.circle, { transform: [{ scale }] }]} />
       <Text style={styles.title}>Raksha Initiated</Text>
       <Text style={styles.subtitle}>Protection Active</Text>
-    </View>
+    </Pressable>
   );
 }
 

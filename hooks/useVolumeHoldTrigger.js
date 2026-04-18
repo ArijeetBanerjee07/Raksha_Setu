@@ -31,6 +31,8 @@ export default function useVolumeHoldTrigger() {
     setIsHolding(false);
   };
 
+  const isSettingVolumeRef = useRef(false);
+
   useEffect(() => {
     let isSubscribed = true;
 
@@ -39,11 +41,15 @@ export default function useVolumeHoldTrigger() {
 
     // Actual Native Volume Listener 
     // Triggers "Raksha Mode" if volume button is pressed down repeatedly (4 times)
-    // since continuous "hold" is blocked by OS once volume hits 0%
     const volumeListener = VolumeManager.addVolumeListener((result) => {
-      // result.volume tracks the new level
+      // Ignore volume changes that we programmatically triggered ourselves
+      if (isSettingVolumeRef.current) {
+        isSettingVolumeRef.current = false;
+        return;
+      }
+
       volumeDropCountRef.current += 1;
-      setIsHolding(true); // show progress bar instantly in stealth mode
+      setIsHolding(true); // show progress bar instantly in stealth mode // show progress bar instantly in stealth mode
       
       if (volumeTimeoutRef.current) clearTimeout(volumeTimeoutRef.current);
       
@@ -57,6 +63,14 @@ export default function useVolumeHoldTrigger() {
         setIsRakshaMode(true);
         setIsHolding(false);
         volumeDropCountRef.current = 0;
+      }
+
+      // CRITICAL FIX: If the user spams the button, the volume eventually hits 0% or 100%.
+      // Android stops firing Volume events if it hits the maximum or minimum limit!
+      // We must invisibly bounce the volume back to the middle (50%) to keep the button fully active.
+      if (result.volume <= 0.1 || result.volume >= 0.9) {
+        isSettingVolumeRef.current = true;
+        VolumeManager.setVolume(0.5);
       }
     });
 
@@ -99,5 +113,9 @@ export default function useVolumeHoldTrigger() {
     };
   }, []);
 
-  return { isHolding, isRakshaMode };
+  const cancelRakshaMode = () => {
+    setIsRakshaMode(false);
+  };
+
+  return { isHolding, isRakshaMode, cancelRakshaMode };
 }

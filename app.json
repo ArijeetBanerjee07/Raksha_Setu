@@ -5,11 +5,35 @@
     "version": "1.0.0",
     "scheme": "mini1-raksha-trigger",
     "userInterfaceStyle": "light",
+    "icon": "./RakshaSetuLogo.png",
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "RakshaSetu needs your location to send help."
+        }
+      ]
     ],
     "android": {
-      "package": "com.anonymous.mini1rakshatrigger"
+      "package": "com.anonymous.mini1rakshatrigger",
+      "adaptiveIcon": {
+        "foregroundImage": "./RakshaSetuLogo.png",
+        "backgroundColor": "#FBFBFC"
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "RECORD_AUDIO",
+        "RECEIVE_BOOT_COMPLETED",
+        "FOREGROUND_SERVICE"
+      ]
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "efc43fc7-61d8-42f2-857e-a6b513741189"
+      }
     }
   }
 }

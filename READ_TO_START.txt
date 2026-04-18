@@ -1,0 +1,57 @@
+==================================================
+   🚀 HOW TO RUN THE RAKSHA SAFETY & RECIPE APP 🍳
+==================================================
+
+Welcome! Follow these steps to get the project running on your phone.
+
+--------------------------------------------------
+STEP 1: INSTALL THE BASICS (OR SKIP IF DONE)
+--------------------------------------------------
+1. Download & Install Node.js (LTS): https://nodejs.org/
+2. Install "Expo Go" on your phone (Play Store or App Store).
+
+--------------------------------------------------
+STEP 2: PREPARE THE PROJECT
+--------------------------------------------------
+1. Unzip the project folder.
+2. Open the folder and click in the address bar (at the top).
+3. Type "cmd" and press ENTER. A black terminal window will open.
+4. Type this command and wait for it to finish:
+   > npm install
+
+--------------------------------------------------
+💡 CHOOSE YOUR WAY TO RUN
+--------------------------------------------------
+
+OPTION A: THE QUICK WAY (UI & Recipes Only)
+-------------------------------------------
+If you just want to see the designs and the recipe search:
+1. In your terminal, type:
+   > npx expo start
+2. Open "Expo Go" on your phone and scan the QR code.
+
+OPTION B: THE FULL WAY (Testing Safety Triggers)
+-------------------------------------------
+If you want to test the phone's Volume Button Safety Triggers:
+
+1. Install the build tool:
+   > npm install -g eas-cli
+
+2. Log in (Create a free account if needed):
+   > eas login
+
+3. Build the custom APK (takes 5-10 mins):
+   > eas build --profile development --platform android
+
+4. Follow the link provided by Expo to download/install the APK on your phone.
+
+5. Start the server (on your computer):
+   > npx expo start --dev-client
+
+6. Open the "Raksha" App you just installed on your phone (NOT Expo Go) and scan the QR code.
+
+---
+⭐ QUICK HINTS: 
+- Search for "raksha" in the app to find the safety features.
+- Tap any recipe to see full details.
+==================================================

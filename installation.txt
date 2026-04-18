@@ -1,0 +1,47 @@
+==================================================
+        EXPO DEVELOPMENT BUILD SETUP GUIDE
+==================================================
+This guide explains how to set up a custom "Development Client" APK. 
+This is required whenever you use native modules (like Firebase, 
+Bluetooth, or custom audio) that are not included in Expo Go.
+
+1.  INSTALL EAS CLI GLOBALLY 
+    If you haven't already, install the Expo Application Services (EAS) CLI.
+    > npm install -g eas-cli
+
+2.  LOG IN TO YOUR EXPO ACCOUNT 
+    > eas login
+
+3.  CONFIGURE THE PROJECT 
+    Run this in your project root. It will create or update your eas.json.
+    > eas build:configure
+
+4.  INSTALL EXPO DEV CLIENT 
+    This library allows your project to run its own developer client.
+    > npx expo install expo-dev-client
+
+5.  RE-BUILD THE APK (DEVELOPMENT PROFILE) 
+    This command sends your config to Expo's servers and builds the APK.
+    It will provide a URL/QR code to download the APK.
+    > eas build --profile development --platform android
+
+    * NOTE: You only need to do this when you add NEW native packages 
+    (anything that modifies the 'android' folder). 
+
+6.  RUN THE DEVELOPMENT SERVER 
+    Once the APK is installed on your phone, run:
+    > npx expo start --dev-client
+
+7.  SCAN THE QR CODE WITH THE NEW APP 
+    * Open the APP YOU DOWNLOADED (not Expo Go).
+    * Scan the QR code from your terminal.
+    * It will connect to your development server.
+
+--------------------------------------------------
+PRO TIP: Why do we do this?
+Standard "Expo Go" is like a browser. It has some features built-in.
+But when you add something like "Firebase Native", Expo Go doesn't 
+know how to handle it. The APK you build is like a "Custom Expo Go" 
+made specifically for your project's unique features.
+--------------------------------------------------
+==================================================

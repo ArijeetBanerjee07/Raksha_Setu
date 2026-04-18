@@ -11,3 +11,4 @@ npm-debug.*
 project.xcworkspace
 android/
 ios/
+.env

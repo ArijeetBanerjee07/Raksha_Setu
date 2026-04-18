@@ -1,0 +1,40 @@
+==================================================
+      CHECKLIST FOR ANNIK (PROJECT SETUP)
+==================================================
+Hey Annik! Here is what you need to do to get the Raksha project 
+running on your machine and phone.
+
+1.  INSTALL EAS CLI (If you don't have it)
+    Open your terminal and run:
+    > npm install -g eas-cli
+
+2.  LOG IN TO EXPO
+    > eas login
+
+3.  LINK TO YOUR EXPO ACCOUNT
+    Since the project is currently linked to my account, you need to 
+    re-configure it for yours. Run this and say "Yes" to the prompts:
+    > eas build:configure
+
+4.  BUILD YOUR DEVELOPMENT APK
+    This will create the custom APK you need for your phone:
+    > eas build --profile development --platform android
+
+    * When finished, scan the QR code to download and install the APK.
+
+5.  START THE DEVELOPMENT SERVER
+    Wait until the APK is installed on your phone, then run:
+    > npx expo start --dev-client
+
+6.  SCAN AND RUN
+    * Open the APP you just installed (not Expo Go).
+    * Scan the QR code appearing in your terminal.
+    * The app should now load!
+
+--------------------------------------------------
+💡 HACKATHON TESTING:
+The "Raksha" secret screen is triggered in the recipe app by:
+- Holding the Volume Down button for 4 seconds OR
+- Holding the Orange Header for 4 seconds (for testing).
+--------------------------------------------------
+==================================================
