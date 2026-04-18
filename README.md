@@ -48,12 +48,12 @@ Underneath the facade lies an advanced distress and safety infrastructure. Activ
 
 | The Facade (Home) | The Facade (Explore) |
 |:---:|:---:|
-| ![Dish It Up](docs/image-2.jpg) | ![Explore Recipes](docs/image-1.jpg) |
+| ![Dish It Up](docs/image-2.png) | ![Explore Recipes](docs/image-1.png) |
 | The home screen operates perfectly as a harmless cooking utility. | Discover new recipes completely shielding the real purpose. |
 
 | AI Safety Advisor | Emergency Active |
 |:---:|:---:|
-| ![AI Advisor](docs/image-3.jpg) | ![Active Emergency](docs/image-4.jpg) |
+| ![AI Advisor](docs/image-3.png) | ![Active Emergency](docs/image-4.png) |
 | Ask legal questions or advice on what to do when threatened. | SOS triggered: Live tracking, Background Recording, and Incident Report. |
 
 ---
